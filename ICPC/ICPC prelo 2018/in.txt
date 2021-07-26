@@ -1,0 +1,61 @@
+5
+4
+5 2 4 10
+google
+oooogp
+googoo
+goloeg
+5
+google
+lgooeg
+glooeg
+poops
+goopoo
+4
+5 2 4 10
+google
+oooogp
+googoo
+goloeg
+5
+google
+lgooeg
+glooeg
+poops
+goopoo
+4
+5 2 4 10
+google
+oooogp
+googoo
+goloeg
+5
+google
+lgooeg
+glooeg
+poops
+goopoo
+4
+5 2 4 10
+google
+oooogp
+googoo
+goloeg
+5
+google
+lgooeg
+glooeg
+poops
+goopoo
+4
+5 2 4 10
+google
+oooogp
+googoo
+goloeg
+5
+google
+lgooeg
+glooeg
+poops
+goopoo

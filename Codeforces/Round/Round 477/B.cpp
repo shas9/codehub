@@ -1,0 +1,95 @@
+#include <bits/stdc++.h>`
+
+#define slld(longvalue) scanf("%lld", &longvalue)
+#define plld(longvalue) printf("%lld\n", longvalue)
+
+#define slf(longvalue) scanf("%lf", &longvalue)
+#define plf(longvalue) printf("%lf\n", longvalue)
+#define sc(letter) scanf("%c", &letter)
+#define pc(letter) printf("%c", letter)
+
+#define ss(name) scanf("%s", name)
+#define ps(name) printf("%s", name)
+
+#define pnew printf("\n")
+
+#define ll long long
+
+#define printcase(indexing,ans) printf("Case %lld: %lld\n", indexing, ans)
+
+#define pb(x) push_back(x)
+
+#define bug printf("BUG\n")
+
+#define mxlld 2e18
+#define mnlld -2e18
+
+#define mxd 2e8
+#define mnd -2e8
+
+#define pi 3.14159265359
+
+#define mod 1000000009
+
+
+using namespace std;
+
+int main()
+{
+    ll i, j, k, l, m, n, o;
+    ll testcase;
+    ll input, flag, tag, ans;
+
+    // freopen("in.txt", "r", stdin);
+
+    ll a, b;
+
+    cin >> n >> a >> b;
+
+    vector < ll > v;
+
+    v.clear();
+
+    cin >> m;
+    ll tot = m;
+    for(i = 1; i < n; i++)
+    {
+        cin >> input;
+        v.push_back(input);
+        tot += input;
+    }
+
+    ll x = a * m;
+
+    sort(v.begin(),v.end());
+
+    ll sz = v.size();
+
+    ll cnt = 0;
+    ans = 0;
+
+    if(x / tot >= b)
+    {
+        ans = 0;
+    }
+    else
+    for(i = sz - 1; i >= 0; i--)
+    {
+        tot -= v[i];
+        ans++;
+
+        ll t = x / tot;
+
+        if(t >= b)
+        {
+            break;
+        }
+
+    }
+
+    cout << ans << endl;
+
+
+}
+
+

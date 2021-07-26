@@ -1,0 +1,111 @@
+@extends('layouts.app1')
+
+@section('title')
+	Product Information
+@endsection
+
+@section('content')
+<head>
+  <link rel="stylesheet" href="frontend/css/mystyle2.css">
+  <link rel="stylesheet" href="/frontend/samin-css/mystyle-home.css">
+</head>
+
+
+
+<table align="center">
+  <tr>
+      <th>
+      <section class="basic bg-gray p-tb-15">
+      <div class="container">
+          <div class="bg-white">
+              <div class="row clearfix">
+                  <div class="col-md-6 left" style="margin-left: auto";>
+
+                      <div class="images product-images" style="border-radius: 2px";>
+
+
+
+                        @foreach ($productDetails as $productDetail)
+
+                          <div class="product-img-holder" style="margin-right: 30%";>
+                            <a class="thumbnail" href="{{$productDetail->product_image}}" title="{{$productDetail->product_name.", ".$productDetail->product_category}}"><img class="main-img" style="margin-right: 300px; width: 350px" src="/storage/product_images/{{$productDetail->product_image}}" title="{{$productDetail->product_name.", ".$productDetail->product_category}}" alt=""></a>
+                            <meta itemprop="image" content="{{$productDetail->product_image}}">
+                         </div>
+
+                        @endforeach
+
+
+
+                      </div>
+                  </div>
+                  <div class="col-md-6 right">
+                      <div class="product-short-info">
+                        @foreach ($productDetails as $productDetail)
+                          <h1 itemprop="name" class="{{$productDetail->product_name}}">{{$productDetail->product_name}}</h1>
+
+                          <br><br>
+
+                         <table class="product-info-table">
+                            <tbody>
+                                <tr class="product-info-group">
+
+                                    <td class="product-info-label">Price:</td>
+
+                                    @if($productDetail->product_price == null)
+                                        <td class="product-info-data product-price">Call for price</td>
+    		    					@else
+                                        <td class="product-info-data product-price">{{$productDetail->product_price}}৳</td>
+    		    				    @endif
+                                </tr>
+
+                                <tr class="product-info-group">
+                                    <td class="product-info-label">Model:</td>
+                                    <td class="product-info-data product-model" itemprop="model">{{$productDetail->product_model}}</td>
+                                </tr>
+
+
+                                <tr class="product-info-group">
+                                    <td class="product-info-label">Status:</td>
+                                    <td class="product-info-data product-status">In Stock</td>
+                                </tr>
+
+                                <tr class="product-info-group" itemprop="brand" itemtype="http://schema.org/Thing" itemscope="">
+                                    <td class="product-info-label">Brand:</td>
+                                    <td class="product-info-data product-brand" itemprop="name">{{$productDetail->product_brand}}</td>
+                                </tr>
+
+                                <tr class="product-info-group" itemprop="brand" itemtype="http://schema.org/Thing" itemscope="">
+                                    <td class="product-info-label">Made In: &nbsp;</td>
+                                    <td class="product-info-data product-brand" itemprop="name">{{$productDetail->product_country}}</td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+
+                    </div>
+
+                    <br><br>
+                    <h3>Product Details</h3>
+                    <div class="short-description">
+                       {{$productDetail->product_details}}
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+ </th>
+</tr>
+</table>
+
+
+
+
+	@endforeach
+
+
+
+
+
+@endsection

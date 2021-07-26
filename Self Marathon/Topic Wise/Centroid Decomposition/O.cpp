@@ -1,0 +1,264 @@
+// God put a smile upon your face <3
+
+#include <bits/stdc++.h>`
+
+#define slld(longvalue) scanf("%lld", &longvalue)
+
+#define ll long long
+#define ull unsigned long long
+#define pll pair < long long, long long >
+
+#define fastio ios_base:: sync_with_stdio(false); cin.tie(0); cout.tie(0)
+
+#define pb push_back
+
+#define bug printf("BUG\n")
+
+#define mxlld 1e10
+#define mnlld -LLONG_MAX
+
+#define mxd 2e8
+#define mnd -2e8
+
+#define pi 3.14159265359
+
+using namespace std;
+
+bool check(ll n, ll pos)
+{
+    return n & (1LL << pos);
+}
+
+ll Set(ll n, ll pos)
+{
+    return n = n | (1LL << pos);
+}
+
+const ll mx = 100005;
+
+ll cenpar[mx];
+ll sz[mx];
+bool done[mx];
+multiset < ll > dist[mx];
+ll n, k, ans;
+
+vector < ll > g[mx];
+
+void dfs(ll node, ll par)
+{
+    sz[node] = 1;
+
+    for(auto it: g[node])
+    {
+        if(it != par && done[it] == false)
+        {
+            dfs(it,node);
+            sz[node] += sz[it];
+        }
+    }
+}
+
+ll decompose(ll cen)
+{
+    dfs(cen,-1);
+
+    ll target = sz[cen] / 2;
+    ll p = -1;
+    bool ok = false;
+
+    while(!ok)
+    {
+        ok = true;
+
+        for(auto it: g[cen])
+        {
+            if(it != p && done[it] == false && sz[it] > target)
+            {
+                ok = false;
+                p = cen;
+                cen = it;
+                break;
+            }
+        }
+    }
+
+    done[cen] = true;
+
+    for(auto it: g[cen])
+    {
+        if(done[it] == false)
+        {
+            cenpar[decompose(it)] = cen;
+        }
+    }
+
+    return cen;
+}
+
+ll par[19][mx];
+ll depth[mx];
+ll pwr[20];
+
+void dfs0(ll src,ll p,ll level)
+{
+    depth[src]=level;
+    par[0][src]=p;
+    for(ll i=0; i<g[src].size(); i++)
+    {
+        ll adj=g[src][i];
+        if(adj!=p)
+        {
+            dfs0(adj,src,level+1);
+        }
+    }
+}
+void preL()
+{
+
+    for(ll i=1; i<=17; i++)
+    {
+        for(ll j=1; j<=n; j++)
+        {
+            if(par[i-1][j]==-1)continue;
+            par[i][j]=par[i-1][par[i-1][j]];                       ///i means 2^i th parent of j th node par[i][j] means 2^i th parent of jth node
+        }
+    }
+}
+ll lca(ll u,ll v)
+{
+    if(depth[u]>depth[v])
+    {
+        swap(u,v);
+    }
+    ll diff=depth[v]-depth[u];
+    for(ll i=0; i<=17; i++)
+    {
+        if(check(diff,i)==1)
+        {
+            v=par[i][v];
+        }
+    }
+    if(u==v)
+    {
+        return u;
+    }
+    for(ll i=17; i>=0; i--)
+    {
+        if(par[i][u]!=par[i][v])
+        {
+            u=par[i][u];
+            v=par[i][v];
+        }
+    }
+    return par[0][u];
+}
+
+ll col[mx];
+
+int main()
+{
+    ll i, j, k, l, o, r, q;
+    ll testcase;
+    ll input, flag, tag, ans;
+
+//    freopen("input.txt", "r", stdin);
+
+//    freopen("output.txt", "w", stdout);
+
+    ll m;
+
+    slld(n);
+
+    memset(col,0,sizeof col);
+
+    for(ll i = 1; i < n; i++)
+    {
+        ll u, v;
+
+        slld(u);
+        slld(v);
+
+        g[u].pb(v);
+        g[v].pb(u);
+    }
+
+    ll root = decompose(1);
+
+    for(ll i = 1; i <= n; i++) dist[i].clear();
+
+    dfs0(1,-1,0);
+    preL();
+
+    slld(m);
+
+    for(ll i = 1; i <= m; i++)
+    {
+        ll t;
+        slld(t);
+
+        ll u, v;
+        slld(u);
+        v = u;
+
+        if(t == 0)
+        {
+			if(col[u] == 0)
+            {
+				while(1)
+				{
+					ll dd = depth[u] + depth[v] - 2 * depth[lca(u,v)];
+
+					dist[v].insert(dd);
+
+					if(v == root) break;
+
+					v = cenpar[v];
+				}
+            }
+            else
+            {
+				while(1)
+				{
+					ll dd = depth[u] + depth[v] - 2 * depth[lca(u,v)];
+
+					assert(dist[v].find(dd) != dist[v].end());
+					dist[v].erase(dist[v].find(dd));
+
+					if(v == root) break;
+
+					v = cenpar[v];
+				}
+            }
+
+            col[u] ^= 1;
+        }
+        else
+        {
+            ans = mxlld;
+
+            while(1)
+            {
+                ll dd = depth[u] + depth[v] - 2 * depth[lca(u,v)];
+
+                if(!dist[v].empty()) ans = min(ans, dd + *dist[v].begin());
+
+                if(v == root) break;
+
+                v = cenpar[v];
+            }
+
+            if(ans == mxlld) ans = -1;
+
+            printf("%lld\n", ans);
+        }
+
+//        cout << dist[root].size() << endl;
+    }
+
+
+
+}
+
+
+
+

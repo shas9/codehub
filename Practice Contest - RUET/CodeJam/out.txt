@@ -1,0 +1,50 @@
+Case 1: Faizlami Naki?
+Case 2: 2
+Case 3: 5
+Case 4: 5
+Case 5: 2
+Case 6: 3
+Case 7: Faizlami Naki?
+Case 8: Faizlami Naki?
+Case 9: 5
+Case 10: 5
+Case 11: Faizlami Naki?
+Case 12: Faizlami Naki?
+Case 13: 2
+Case 14: Faizlami Naki?
+Case 15: 7
+Case 16: 5
+Case 17: Faizlami Naki?
+Case 18: 5
+Case 19: 7
+Case 20: 5
+Case 21: 3
+Case 22: Faizlami Naki?
+Case 23: 2
+Case 24: Faizlami Naki?
+Case 25: 2
+Case 26: 5
+Case 27: Faizlami Naki?
+Case 28: 7
+Case 29: 3
+Case 30: 5
+Case 31: 3
+Case 32: Faizlami Naki?
+Case 33: 5
+Case 34: Faizlami Naki?
+Case 35: 2
+Case 36: 3
+Case 37: Faizlami Naki?
+Case 38: Faizlami Naki?
+Case 39: 3
+Case 40: 2
+Case 41: 7
+Case 42: 2
+Case 43: 5
+Case 44: 5
+Case 45: Faizlami Naki?
+Case 46: 3
+Case 47: 3
+Case 48: 5
+Case 49: 5
+Case 50: 7

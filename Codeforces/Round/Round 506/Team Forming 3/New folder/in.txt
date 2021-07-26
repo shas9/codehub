@@ -1,0 +1,10 @@
+name[0] = "ZERO";
+name[1] = "ONE";
+name[2] = "TWO";
+name[3] = "THREE";
+name[4] = "FOUR";
+name[5] = "FIVE";
+name[6] = "SIX";
+name[7] = "SEVEN";
+name[8] = "EIGHT";
+name[9] = "NINE";
